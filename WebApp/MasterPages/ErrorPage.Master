@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ErrorPage.master.cs" Inherits="WebApp.MasterPages.ErrorPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>An unhandled exception</title>
+    <style type="text/css">
+        body
+        {
+            font-size: 12pt;
+            color: #333333;
+            background-color: #EEEEEE;
+        }
+        #divContent
+        {
+            width: 500px; 
+            height: 300px;
+            background-color: White; 
+            padding: 20px;
+            border: solid 1px #CCCCCC;
+            -moz-box-shadow: 3px 3px 4px #999999;		
+            -webkit-box-shadow: 3px 3px 4px #999999;		
+            box-shadow: 3px 3px 4px #999999;		
+            /* For IE 8 */		
+            -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999')";		
+            /* For IE 5.5 - 7 */		
+            filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999');
+            text-align: left;
+        }
+        li
+        {
+            padding: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        function BackToHome()
+        {
+            if (window.location !== window.parent.location) {
+                // The page is in an iframe
+                window.close();
+            } else {
+                // The page is not in an iframe
+                window.location = "/";
+            }
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <center>
+    <div style="font-family:Calibri">
+        <div id="divContent">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div style="text-align: right;">
+                <div><asp:Image ID="imgCustomerAtCenter" ImageAlign="Bottom" ImageUrl="~/Images/customeratcenter.jpg" runat="server" ToolTip="Customer at the Center" /></div>
+                <div>
+                    <asp:LinkButton ID="btnHome" runat="server" 
+                        OnClientClick="BackToHome();return false;" Text="Home"></asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    </center>
+    </form>
+</body>
+</html>
