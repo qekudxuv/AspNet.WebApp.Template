@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
 
 namespace WebApp
 {
@@ -11,6 +7,12 @@ namespace WebApp
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            //to prevent Cross-Frame Scripting(Clickjacking)
+            HttpContext.Current.Response.AddHeader("x-frame-options", "SAMEORIGIN");
         }
     }
 }
